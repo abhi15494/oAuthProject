@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = mongoose.Schema({
     local: {
@@ -16,6 +17,14 @@ const userSchema = mongoose.Schema({
         }
     }
 });
+
+userSchema.methods.generateHash = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+}
+
+userSchema.methods.validatePassword = function(password){
+    return bcrypt.compareSync(password, this.local.password);
+}
 
 var user = mongoose.model("users", userSchema);
 

@@ -33,17 +33,6 @@ module.exports = function(app, passport){
         req.logout();
         res.redirect("/");
     });
-    // app.post("/signup" ,(req, res)=>{
-    //     var newUser = new user(); 
-    //     newUser.local.username =  req.body.username;
-    //     newUser.local.password =  req.body.password;
-
-    //     newUser.save((err) => {
-    //         if (err) throw err;
-    //     });
-
-    //     res.redirect("/");
-    // });
 };
 
 function isLoggedIn(req, res, next){

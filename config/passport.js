@@ -25,7 +25,7 @@ module.exports = (passport)=>{
                 else{
                     var newuser = new User();
                     newuser.local.username = username;
-                    newuser.local.password = password;
+                    newuser.local.password = newuser.generateHash(password);
 
                     newuser.save((err)=>{
                         if (err) throw err;
@@ -45,7 +45,7 @@ module.exports = (passport)=>{
             User.findOne({"local.username" : username}, (err, user)=>{
                 if (err) return done(err);
                 if (!user) return done(null, false, req.flash("loginMessage", "User not Found"));
-                if (user.local.password != password) return done(null, false, req.flash("loginMessage", "Invalid Password"));
+                if (!user.validatePassword(password)) return done(null, false, req.flash("loginMessage", "Invalid Password"));
                 return done(null, user);
             });
         });
