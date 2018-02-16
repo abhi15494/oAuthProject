@@ -15,6 +15,18 @@ const userSchema = mongoose.Schema({
             required: true,
             trim: true
         }
+    },
+    facebook: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    },
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
     }
 });
 

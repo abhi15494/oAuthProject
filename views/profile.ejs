@@ -15,15 +15,45 @@
           <a class="btn btn-danger" href="/logout">Logout</a>
         </div>
         
-        
+        <!-- LOCAL USER INFORMATION -->
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 <div class="well">
                     <h3><span class="fa fa-user"></span> Local</h3>
                     <p>
                         <strong>Id</strong> : <%= user._id %><br />
                         <strong>Username</strong> : <%= user.local.username %><br />
                         <strong>Password</strong> : <%= user.local.password %><br />
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <!-- FACEBOOK INFORMATION -->
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="well">
+                    <h3><span class="fa fa-facebook"></span> Facebook</h3>
+                    <p>
+                        <strong>Id</strong> : <%= user.facebook.id %><br />
+                        <strong>Token</strong> : <%= user.facebook.token %><br />
+                        <strong>Email</strong> : <%= user.facebook.email %><br />
+                        <strong>Username</strong> : <%= user.facebook.name %><br />
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        <!-- GOOGLE INFORMATION -->
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="well">
+                    <h3><span class="fa fa-google"></span> Google</h3>
+                    <p>
+                        <strong>Id</strong> : <%= user.google.id %><br />
+                        <strong>Token</strong> : <%= user.google.token %><br />
+                        <strong>Email</strong> : <%= user.google.email %><br />
+                        <strong>Username</strong> : <%= user.google.name %><br />
                     </p>
                 </div>
             </div>

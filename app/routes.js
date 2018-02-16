@@ -29,6 +29,27 @@ module.exports = function(app, passport){
         res.render("profile.ejs", { user: req.user });
     });
 
+    // FOR FACEBOOK AUTH
+    app.get("/auth/facebook", passport.authenticate('facebook', {scope: ['email']}));
+
+    app.get("/auth/facebook/callback", 
+        passport.authenticate('facebook', {
+            successRedirect: "/profile",
+            failureRedirect: "/"
+        })
+    );
+
+    // FOR GOOGLE AUTH
+    app.get("/auth/google", passport.authenticate('google', {scope: ['profile','email']}));
+
+    app.get("/auth/google/callback", 
+        passport.authenticate('google', {
+            successRedirect: "/profile",
+            failureRedirect: "/"
+        })
+    );
+
+    // FOR GOOGLE AUTH
     app.get("/logout", (req, res)=> {
         req.logout();
         res.redirect("/");
